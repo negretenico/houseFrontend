@@ -1,0 +1,95 @@
+<h1>House Webpage</h1>
+
+<!-- //('bedrooms', 'bathrooms', 'sqft_lot', 'floors', 'waterfront', 'sqft_above', 'sqft_basement') -->
+<div class="container">
+    <div>
+      <form (ngSubmit)="onSubmit()" #houseForm="ngForm">
+        <div class="form-group">
+          <label for="bedrooms">Number Of Bedrooms</label>
+          <input type="number" class="form-control" id="bedrooms"
+                 required
+                 [(ngModel)]="model.bedrooms" name="bedrooms"
+                 #bedrooms="ngModel" >
+          <div [hidden]="bedrooms.valid || bedrooms.pristine"
+               class="alert alert-danger">
+            Bedrooms are required
+          </div>
+        </div>
+  
+        <div class="form-group">
+            <label for="bathrooms">Bathrooms</label>
+            <input class="form-control" id="sqt_loft" type = "number"
+                    required
+                    [(ngModel)]="model.bathrooms" name="bathrooms"
+                    #bathrooms="ngModel">
+            <div [hidden]="bathrooms.valid || bathrooms.pristine" class="alert alert-danger">
+              Loft footage is required
+            </div>
+          </div>
+  
+        <div class="form-group">
+          <label for="sqt_loft">Square Footage</label>
+          <input class="form-control" id="sqt_loft" type = "number"
+                  required
+                  [(ngModel)]="model.sqt_loft" name="sqt_loft"
+                  #sqt_loft="ngModel">
+          <div [hidden]="sqt_loft.valid || sqt_loft.pristine" class="alert alert-danger">
+            Loft footage is required
+          </div>
+        </div>
+  
+
+        <div class="form-group">
+            <label for="floors">Number of floors</label>
+            <input type="number" class="form-control" id="floors"
+                   required
+                   [(ngModel)]="model.floors" name="floors"
+                   #floors="ngModel" >
+            <div [hidden]="floors.valid || floors.pristine"
+                 class="alert alert-danger">
+              Floors are required
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="waterfront">Waterfront?</label>
+            <select name="waterfront" id="waterfront" class="form-control" required [(ngModel)]="model.waterfront" #waterfront="ngModel">
+
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            <div [hidden]="waterfront.valid || waterfront.pristine"
+                 class="alert alert-danger">
+              WaterFront are required
+            </div>
+          </div>
+        
+          <div class="form-group">
+            <label for="sqft_above">Above ground squarefootage </label>
+            <input class="form-control" id="sqft_above" type = "number"
+                    required
+                    [(ngModel)]="model.sqft_above" name="sqft_above"
+                    #sqft_above="ngModel">
+            <div [hidden]="sqft_above.valid || sqft_above.pristine" class="alert alert-danger">
+              Above footage is required
+            </div>
+          </div>
+        
+          <div class="form-group">
+            <label for="sqft_basement">Basement squarefootage </label>
+            <input class="form-control" id="sqft_basement" type = "number"
+                    required
+                    [(ngModel)]="model.sqft_basement" name="sqft_basement"
+                    #sqft_basement="ngModel">
+            <div [hidden]="sqft_basement.valid || sqft_basement.pristine" class="alert alert-danger">
+              Basement square footage is required
+            </div>
+          </div>
+        
+        <button type="submit" class="btn btn-default">Lets get an estimate</button>
+      </form>
+    </div>
+  <div *ngIf = "submitted">
+        <h1>Your hose would get about</h1>
+        <p>{{priceForHouse}}</p>
+  </div>
+  </div>
